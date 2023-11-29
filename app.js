@@ -25,6 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
+const locationRouter = require('./routes/location');
+
+app.use('/locations/', locationRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

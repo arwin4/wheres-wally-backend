@@ -26,8 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 const locationRouter = require('./routes/location');
+const tokenRouter = require('./routes/token');
 
 app.use('/locations/', locationRouter);
+app.use('/user-token/', tokenRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

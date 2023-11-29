@@ -6,28 +6,14 @@ require('dotenv').config();
 
 const mongoString = process.env.MONGODB_CONNECTION_STRING;
 
-const User = require('../models/user');
-const Post = require('../models/post');
-const Comment = require('../models/comment');
+const Location = require('../models/location');
 
-const admin = new User({
-  username: 'admin',
-  password: 'pass',
-  firstName: 'Arwin',
-  lastName: 'Yella',
-  isAdmin: true,
-});
-
-const firstPost = new Post({
-  title: 'My first blog post',
-  author: admin._id,
-  content: 'Bla bla bla lorem ipsum dolor amet',
-});
-
-const commentOnFirstPost = new Comment({
-  post: firstPost._id,
-  author: 'Annoying commenter',
-  content: 'First!',
+const slide = new Location({
+  name: 'slide',
+  topBorderCoordinate: 955,
+  bottomBorderCoordinate: 1040,
+  leftBorderCoordinate: 1490,
+  rightBorderCoordinate: 1568,
 });
 
 async function main() {
@@ -39,12 +25,8 @@ async function main() {
   }
   console.log('Connected. Populating database...');
   try {
-    await admin.save();
-    console.log('Admin added to database.');
-    await firstPost.save();
-    console.log('Sample post added.');
-    await commentOnFirstPost.save();
-    console.log('Sample comment added.');
+    await slide.save();
+    console.log('Slide added to database.');
   } catch (error) {
     console.log(error);
   }

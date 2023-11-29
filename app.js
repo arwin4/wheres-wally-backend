@@ -29,7 +29,7 @@ const locationRouter = require('./routes/location');
 const tokenRouter = require('./routes/token');
 
 app.use('/locations/', locationRouter);
-app.use('/user-token/', tokenRouter);
+app.use('/tokens/', tokenRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

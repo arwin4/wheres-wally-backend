@@ -4,7 +4,7 @@ const router = express.Router();
 
 const tokenController = require('../controllers/tokenController');
 
-// Get user token
-router.get('/', tokenController.sendToken);
+// Get session token
+router.get('/session', tokenController.sendSessionToken);
 
 module.exports = router;

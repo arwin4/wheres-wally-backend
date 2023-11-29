@@ -16,6 +16,14 @@ const slide = new Location({
   rightBorderCoordinate: 1568,
 });
 
+const fountain = new Location({
+  name: 'fountain',
+  topBorderCoordinate: 693,
+  leftBorderCoordinate: 1189,
+  bottomBorderCoordinate: 772,
+  rightBorderCoordinate: 1263,
+});
+
 async function main() {
   console.log('Connecting to MongoDB Atlas...');
   try {
@@ -25,8 +33,8 @@ async function main() {
   }
   console.log('Connected. Populating database...');
   try {
-    await slide.save();
-    console.log('Slide added to database.');
+    await Promise.all([slide.save(), fountain.save()]);
+    console.log('Locations added to database.');
   } catch (error) {
     console.log(error);
   }

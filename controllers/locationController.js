@@ -20,6 +20,6 @@ exports.verifyLocation = [
       ],
     });
     console.log(validLocation);
-    return res.send(validLocation ? 'correct' : 'incorrect');
+    return res.send(validLocation ? 'true' : 'false');
   }),
 ];

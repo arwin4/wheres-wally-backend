@@ -22,39 +22,56 @@ async function verifyWallyData(req) {
   return false;
 }
 
+async function findUser(req) {
+  const { userToken } = req.body;
+  let currentUser;
+  try {
+    currentUser = await User.findOne({ userId: userToken }).exec();
+    return currentUser;
+  } catch (error) {
+    throw new Error('Unable to find user in database');
+  }
+}
+
 exports.verifyWally = asyncHandler(async (req, res) => {
   // TODO: sanitize?
 
   const wallyValid = await verifyWallyData(req);
   if (!wallyValid) return res.send({ wallyValid: false, gameFinished: false });
 
-  const { userToken, wallyName } = req.body;
-  let currentUser;
-
-  // Find user
-  try {
-    currentUser = await User.findOne({ userId: userToken }).exec();
-  } catch (error) {
-    throw new Error('Unable to find user in database');
-  }
+  const { wallyName } = req.body;
+  const user = await findUser(req);
 
   // Mark wally as found
   try {
-    const foundWally = currentUser.wallies.find(
-      (wally) => wally.name === wallyName,
-    );
+    const foundWally = user.wallies.find((wally) => wally.name === wallyName);
     foundWally.foundByUser = true;
-    currentUser.markModified('wallies'); // Mongoose won't detect the change without this
-    await currentUser.save();
+    user.markModified('wallies'); // Mongoose won't detect the change without this
+    await user.save();
   } catch (error) {
     throw new Error('Unable to update found wallies in database');
   }
 
   // All wallies found
-  if (currentUser.wallies.every((wally) => wally.foundByUser)) {
+  if (user.wallies.every((wally) => wally.foundByUser)) {
     return res.send({ wallyValid: true, gameFinished: true });
   }
 
   // Not all wallies have been found yet
   return res.send({ wallyValid: true, gameFinished: false });
+});
+
+exports.resetWallies = asyncHandler(async (req, res) => {
+  const user = await findUser(req);
+  try {
+    user.wallies.forEach((wally) => {
+      const currentWally = wally;
+      currentWally.foundByUser = false;
+    });
+    user.markModified('wallies');
+    await user.save();
+  } catch (error) {
+    throw new Error('Unable to reset found wallies for this user');
+  }
+  return res.send();
 });

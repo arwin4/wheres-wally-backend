@@ -1,7 +1,7 @@
 const { randomUUID } = require('crypto');
 const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
-const addLocationsToUser = require('../utils/addLocationsToUser');
+const addWalliesToUser = require('../utils/addWalliesToUser');
 
 exports.sendSessionToken = asyncHandler((req, res) => {
   const sessionToken = randomUUID();
@@ -17,7 +17,7 @@ exports.sendUserToken = asyncHandler(async (req, res) => {
       userId: userToken,
     });
 
-    user = addLocationsToUser(user);
+    user = addWalliesToUser(user);
 
     await user.save();
   } catch (error) {

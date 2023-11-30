@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const LocationSchema = mongoose.Schema({
+const WallySchema = mongoose.Schema({
   name: {
     required: true,
     type: String,
@@ -23,4 +23,4 @@ const LocationSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Location', LocationSchema);
+module.exports = mongoose.model('Wally', WallySchema);

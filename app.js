@@ -25,10 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-const locationRouter = require('./routes/location');
+const wallyRouter = require('./routes/wally');
 const tokenRouter = require('./routes/token');
 
-app.use('/locations/', locationRouter);
+app.use('/wallies/', wallyRouter);
 app.use('/tokens/', tokenRouter);
 
 // catch 404 and forward to error handler

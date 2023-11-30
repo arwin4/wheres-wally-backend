@@ -6,9 +6,9 @@ require('dotenv').config();
 
 const mongoString = process.env.MONGODB_CONNECTION_STRING;
 
-const Location = require('../models/location');
+const Wally = require('../models/wally');
 
-const slide = new Location({
+const slide = new Wally({
   name: 'slide',
   topBorderCoordinate: 955,
   bottomBorderCoordinate: 1040,
@@ -16,7 +16,7 @@ const slide = new Location({
   rightBorderCoordinate: 1568,
 });
 
-const fountain = new Location({
+const fountain = new Wally({
   name: 'fountain',
   topBorderCoordinate: 693,
   leftBorderCoordinate: 1189,
@@ -34,7 +34,7 @@ async function main() {
   console.log('Connected. Populating database...');
   try {
     await Promise.all([slide.save(), fountain.save()]);
-    console.log('Locations added to database.');
+    console.log('Wallies added to database.');
   } catch (error) {
     console.log(error);
   }

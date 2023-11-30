@@ -1,20 +1,20 @@
 {
   "info": {
-    "_postman_id": "42a72a9c-8820-46b1-af83-d9ab924f2352",
-    "name": "Locations",
+    "_postman_id": "32634ab6-73f3-4317-b356-952be6e8c4c0",
+    "name": "Wallies",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "30981832"
   },
   "item": [
     {
-      "name": "Verify incorrect location (to the right of correct location)",
+      "name": "Verify incorrect wally (to the right of correct wally)",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":false`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":false`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -26,7 +26,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1800,\r\n        \"y\": 955\r\n    },\r\n    \"itemName\": \"slide\",\r\n    \"userId\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1800,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userId\": \"test\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -34,24 +34,24 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []
     },
     {
-      "name": "Verify incorrect location (to the left of correct location)",
+      "name": "Verify incorrect wally (to the left of correct wally)",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":false`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":false`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -63,7 +63,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1200,\r\n        \"y\": 955\r\n    },\r\n    \"itemName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1200,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -71,24 +71,24 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []
     },
     {
-      "name": "Verify incorrect location (above correct location)",
+      "name": "Verify incorrect wally (above correct wally)",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":false`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":false`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -100,7 +100,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 500\r\n    },\r\n    \"itemName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 500\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -108,24 +108,24 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []
     },
     {
-      "name": "Verify incorrect location (under correct location)",
+      "name": "Verify incorrect wally (under correct wally)",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":false`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":false`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -137,7 +137,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 2000\r\n    },\r\n    \"itemName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 2000\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -145,24 +145,24 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []
     },
     {
-      "name": "Verify correct location",
+      "name": "Verify correct wally",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":true`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":true`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -174,7 +174,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"itemName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"f80c7cf6-e7f3-4c6e-8696-b689d0d42f06\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -182,24 +182,24 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []
     },
     {
-      "name": "Verify correct location, but wrong name",
+      "name": "Verify correct wally, but wrong name",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "pm.test(\"Body matches string\", function () {\r",
-              "    pm.expect(pm.response.text()).to.include(`\"itemValid\":false`);\r",
+              "    pm.expect(pm.response.text()).to.include(`\"wallyValid\":false`);\r",
               "});"
             ],
             "type": "text/javascript"
@@ -211,7 +211,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"itemName\": \"fountain\", // This is the location of 'slide'\r\n    \"userToken\": \"test\"\r\n}",
+          "raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"fountain\", // This is the wally of 'slide'\r\n    \"userToken\": \"test\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -219,11 +219,11 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/locations/",
+          "raw": "http://localhost:3000/wallies/",
           "protocol": "http",
           "host": ["localhost"],
           "port": "3000",
-          "path": ["locations", ""]
+          "path": ["wallies", ""]
         }
       },
       "response": []

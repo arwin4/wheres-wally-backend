@@ -9,7 +9,7 @@ const UserSchema = mongoose.Schema({
     // required: true,
     type: String,
   },
-  items: {
+  wallies: {
     // required: true,
     type: Array,
   },

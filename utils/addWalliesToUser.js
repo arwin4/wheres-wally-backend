@@ -1,6 +1,6 @@
-function addLocationsToUser(user) {
+function addWalliesToUser(user) {
   const newUser = user;
-  newUser.items = [
+  newUser.wallies = [
     {
       name: 'slide',
       foundByUser: false,
@@ -13,4 +13,4 @@ function addLocationsToUser(user) {
   return newUser;
 }
 
-module.exports = addLocationsToUser;
+module.exports = addWalliesToUser;

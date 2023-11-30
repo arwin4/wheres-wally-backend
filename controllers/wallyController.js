@@ -31,12 +31,14 @@ exports.verifyWally = asyncHandler(async (req, res) => {
   const { userToken, wallyName } = req.body;
   let currentUser;
 
+  // Find user
   try {
     currentUser = await User.findOne({ userId: userToken }).exec();
   } catch (error) {
     throw new Error('Unable to find user in database');
   }
 
+  // Mark wally as found
   try {
     const foundWally = currentUser.wallies.find(
       (wally) => wally.name === wallyName,
@@ -48,8 +50,11 @@ exports.verifyWally = asyncHandler(async (req, res) => {
     throw new Error('Unable to update found wallies in database');
   }
 
-  if (currentUser.wallies.every((wally) => wally.foundByUser))
+  // All wallies found
+  if (currentUser.wallies.every((wally) => wally.foundByUser)) {
     return res.send({ wallyValid: true, gameFinished: true });
+  }
 
+  // Not all wallies have been found yet
   return res.send({ wallyValid: true, gameFinished: false });
 });

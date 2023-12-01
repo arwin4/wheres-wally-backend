@@ -27,6 +27,7 @@ async function findUser(req) {
   let currentUser;
   try {
     currentUser = await User.findOne({ userId: userToken }).exec();
+    if (!currentUser) throw new Error('Unable to find user in database');
     return currentUser;
   } catch (error) {
     throw new Error('Unable to find user in database');

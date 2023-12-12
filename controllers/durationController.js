@@ -5,7 +5,7 @@ const findUser = require('../utils/findUser');
 exports.setGameStartTimestamp = asyncHandler(async (req, res) => {
   try {
     const user = await findUser(req);
-    user.gameStartTimeStamp = Date.now();
+    user.gameStartTimestamp = Date.now();
     await user.save();
   } catch (error) {
     throw new Error(`Unable to start tracking this game's duration.`);

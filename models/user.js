@@ -9,6 +9,9 @@ const UserSchema = mongoose.Schema({
     // required: true,
     type: String,
   },
+  name: {
+    type: String,
+  },
   gameStartTimestamp: {
     type: Date,
   },

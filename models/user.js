@@ -9,6 +9,12 @@ const UserSchema = mongoose.Schema({
     // required: true,
     type: String,
   },
+  gameStartTimeStamp: {
+    type: Date,
+  },
+  gameFinishTimeStamp: {
+    type: Date,
+  },
   wallies: {
     // required: true,
     type: Array,

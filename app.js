@@ -27,9 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 const wallyRouter = require('./routes/wally');
 const tokenRouter = require('./routes/token');
+const durationRouter = require('./routes/duration');
 
 app.use('/wallies/', wallyRouter);
 app.use('/tokens/', tokenRouter);
+app.use('/duration/', durationRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

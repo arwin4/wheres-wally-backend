@@ -2,7 +2,9 @@ const asyncHandler = require('express-async-handler');
 
 // Models
 const Wally = require('../models/wally');
-const User = require('../models/user');
+
+// Utils
+const findUser = require('../utils/findUser');
 
 // Check for coordinates and matching name
 async function verifyWallyData(req) {
@@ -20,18 +22,6 @@ async function verifyWallyData(req) {
   });
   if (validWally) return true;
   return false;
-}
-
-async function findUser(req) {
-  const { userToken } = req.body;
-  let currentUser;
-  try {
-    currentUser = await User.findOne({ userId: userToken }).exec();
-    if (!currentUser) throw new Error('Unable to find user in database');
-    return currentUser;
-  } catch (error) {
-    throw new Error('Unable to find user in database');
-  }
 }
 
 exports.verifyWally = asyncHandler(async (req, res) => {

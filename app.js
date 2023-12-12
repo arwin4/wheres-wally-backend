@@ -28,10 +28,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 const wallyRouter = require('./routes/wally');
 const tokenRouter = require('./routes/token');
 const durationRouter = require('./routes/duration');
+const leaderboardController = require('./routes/leaderboard');
 
 app.use('/wallies/', wallyRouter);
 app.use('/tokens/', tokenRouter);
 app.use('/duration/', durationRouter);
+app.use('/leaderboard', leaderboardController);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

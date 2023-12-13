@@ -10,4 +10,7 @@ router.get('/token', userController.sendUserToken);
 // Set user name
 router.put('/name', userController.setUserName);
 
+// Get user's score
+router.get('/score/:userToken', userController.getUserScore);
+
 module.exports = router;

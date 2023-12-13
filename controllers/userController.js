@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/user');
 const addWalliesToUser = require('../utils/addWalliesToUser');
 const findUser = require('../utils/findUser');
+const getFormattedScore = require('../utils/getFormattedScore');
 
 exports.sendSessionToken = asyncHandler((req, res) => {
   const sessionToken = randomUUID();
@@ -38,5 +39,14 @@ exports.setUserName = asyncHandler(async (req, res) => {
     return res.send();
   } catch (err) {
     return res.status(500).send('Unable to update user name');
+  }
+});
+
+exports.getUserScore = asyncHandler(async (req, res) => {
+  try {
+    const formattedScore = await getFormattedScore(req.params.userToken);
+    return res.send({ formattedScore });
+  } catch (err) {
+    return res.status(500).send(err.message);
   }
 });

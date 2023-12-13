@@ -1,7 +1,6 @@
 const User = require('../models/user');
 
-async function findUser(req) {
-  const { userToken } = req.body;
+async function findUser(userToken) {
   let currentUser;
   try {
     currentUser = await User.findOne({ userId: userToken }).exec();

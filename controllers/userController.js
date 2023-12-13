@@ -29,7 +29,7 @@ exports.sendUserToken = asyncHandler(async (req, res) => {
 
 exports.setUserName = asyncHandler(async (req, res) => {
   try {
-    const user = await findUser(req);
+    const user = await findUser(req.body.userToken);
     const { name } = req.body;
 
     user.name = name;

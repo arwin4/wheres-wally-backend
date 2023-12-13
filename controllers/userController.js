@@ -20,7 +20,7 @@ exports.sendUserToken = asyncHandler(async (req, res) => {
   } catch (error) {
     throw new Error('Unable to add new user to database');
   }
-  res.send({ userToken });
+  return res.send({ userToken });
 });
 
 exports.setUserName = asyncHandler(async (req, res) => {

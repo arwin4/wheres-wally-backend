@@ -26,12 +26,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 const wallyRouter = require('./routes/wally');
-const tokenRouter = require('./routes/token');
+const userRouter = require('./routes/user');
 const durationRouter = require('./routes/duration');
 const leaderboardController = require('./routes/leaderboard');
 
 app.use('/wallies/', wallyRouter);
-app.use('/tokens/', tokenRouter);
+app.use('/tokens/', userRouter);
 app.use('/duration/', durationRouter);
 app.use('/leaderboard', leaderboardController);
 

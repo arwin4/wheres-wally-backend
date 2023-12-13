@@ -31,7 +31,7 @@ const durationRouter = require('./routes/duration');
 const leaderboardController = require('./routes/leaderboard');
 
 app.use('/wallies/', wallyRouter);
-app.use('/tokens/', userRouter);
+app.use('/user/', userRouter);
 app.use('/duration/', durationRouter);
 app.use('/leaderboard', leaderboardController);
 

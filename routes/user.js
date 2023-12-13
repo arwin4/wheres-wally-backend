@@ -4,10 +4,10 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 
-// Get session token
-router.get('/session', userController.sendSessionToken);
-
 // Get user token
-router.get('/user', userController.sendUserToken);
+router.get('/token', userController.sendUserToken);
+
+// Set user name
+router.put('/name', userController.setUserName);
 
 module.exports = router;

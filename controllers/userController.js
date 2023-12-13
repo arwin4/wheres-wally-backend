@@ -5,11 +5,6 @@ const addWalliesToUser = require('../utils/addWalliesToUser');
 const findUser = require('../utils/findUser');
 const getFormattedScore = require('../utils/getFormattedScore');
 
-exports.sendSessionToken = asyncHandler((req, res) => {
-  const sessionToken = randomUUID();
-  res.send({ sessionToken });
-});
-
 exports.sendUserToken = asyncHandler(async (req, res) => {
   const userToken = randomUUID();
 

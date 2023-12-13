@@ -31,7 +31,7 @@ exports.setUserName = asyncHandler(async (req, res) => {
     user.name = name;
     user.save();
 
-    return res.send();
+    return res.send({ name: user.name });
   } catch (err) {
     return res.status(500).send('Unable to update user name');
   }

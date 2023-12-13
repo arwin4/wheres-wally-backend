@@ -7,6 +7,7 @@ exports.sendLeaderboard = asyncHandler(async (req, res) => {
     {
       gameStartTimestamp: { $exists: true },
       gameFinishTimestamp: { $exists: true },
+      name: { $exists: true },
     },
     'name gameStartTimestamp gameFinishTimestamp',
   ).exec();

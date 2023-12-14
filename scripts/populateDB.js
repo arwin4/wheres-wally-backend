@@ -24,6 +24,14 @@ const fountain = new Wally({
   rightBorderCoordinate: 1263,
 });
 
+const lonelyIsland = new Wally({
+  name: 'lonely island',
+  topBorderCoordinate: 906,
+  leftBorderCoordinate: 294,
+  bottomBorderCoordinate: 1066,
+  rightBorderCoordinate: 439,
+});
+
 async function main() {
   console.log('Connecting to MongoDB Atlas...');
   try {
@@ -33,7 +41,7 @@ async function main() {
   }
   console.log('Connected. Populating database...');
   try {
-    await Promise.all([slide.save(), fountain.save()]);
+    await Promise.all([slide.save(), fountain.save(), lonelyIsland.save()]);
     console.log('Wallies added to database.');
   } catch (error) {
     console.log(error);

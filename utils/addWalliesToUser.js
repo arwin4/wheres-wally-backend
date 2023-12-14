@@ -9,6 +9,10 @@ function addWalliesToUser(user) {
       name: 'fountain',
       foundByUser: false,
     },
+    {
+      name: 'lonely island',
+      foundByUser: false,
+    },
   ];
   return newUser;
 }

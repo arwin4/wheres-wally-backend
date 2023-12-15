@@ -43,13 +43,26 @@ exports.verifyWally = asyncHandler(async (req, res) => {
     throw new Error('Unable to update found wallies in database');
   }
 
+  // Get wally's center coordinates, used for marking on the canvas
+  let centerCoordinates;
+  try {
+    const foundWally = await Wally.findOne({ name: wallyName }).exec();
+    centerCoordinates = foundWally.centerCoordinates;
+  } catch (error) {
+    throw new Error('Unable to get the center coordinates for this wally');
+  }
+
   // All wallies found
   if (user.wallies.every((wally) => wally.foundByUser)) {
-    return res.send({ wallyValid: true, gameFinished: true });
+    return res.send({
+      wallyValid: true,
+      centerCoordinates,
+      gameFinished: true,
+    });
   }
 
   // Not all wallies have been found yet
-  return res.send({ wallyValid: true, gameFinished: false });
+  return res.send({ wallyValid: true, centerCoordinates, gameFinished: false });
 });
 
 exports.resetWallies = asyncHandler(async (req, res) => {

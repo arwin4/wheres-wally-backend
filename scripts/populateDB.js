@@ -14,6 +14,10 @@ const slide = new Wally({
   bottomBorderCoordinate: 1040,
   leftBorderCoordinate: 1490,
   rightBorderCoordinate: 1568,
+  centerCoordinates: {
+    top: 949,
+    left: 1480,
+  },
 });
 
 const fountain = new Wally({
@@ -22,6 +26,10 @@ const fountain = new Wally({
   leftBorderCoordinate: 1189,
   bottomBorderCoordinate: 772,
   rightBorderCoordinate: 1263,
+  centerCoordinates: {
+    top: 686,
+    left: 1174,
+  },
 });
 
 const lonelyIsland = new Wally({
@@ -30,6 +38,10 @@ const lonelyIsland = new Wally({
   leftBorderCoordinate: 294,
   bottomBorderCoordinate: 1066,
   rightBorderCoordinate: 439,
+  centerCoordinates: {
+    top: 955,
+    left: 317,
+  },
 });
 
 async function main() {

@@ -21,6 +21,10 @@ const WallySchema = mongoose.Schema({
     required: true,
     type: Number,
   },
+  centerCoordinates: {
+    required: true,
+    type: Object,
+  },
 });
 
 module.exports = mongoose.model('Wally', WallySchema);

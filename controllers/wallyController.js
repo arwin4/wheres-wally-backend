@@ -25,8 +25,6 @@ async function verifyWallyData(req) {
 }
 
 exports.verifyWally = asyncHandler(async (req, res) => {
-  // TODO: sanitize?
-
   const wallyValid = await verifyWallyData(req);
   if (!wallyValid) return res.send({ wallyValid: false, gameFinished: false });
 
@@ -36,6 +34,15 @@ exports.verifyWally = asyncHandler(async (req, res) => {
   // Mark wally as found
   try {
     const foundWally = user.wallies.find((wally) => wally.name === wallyName);
+
+    if (foundWally.foundByUser) {
+      return res.send({
+        wallyValid: true,
+        wallyAlreadyFound: true,
+        gameFinished: false,
+      });
+    }
+
     foundWally.foundByUser = true;
     user.markModified('wallies'); // Mongoose won't detect the change without this
     await user.save();
@@ -56,13 +63,19 @@ exports.verifyWally = asyncHandler(async (req, res) => {
   if (user.wallies.every((wally) => wally.foundByUser)) {
     return res.send({
       wallyValid: true,
+      wallyAlreadyFound: false,
       centerCoordinates,
       gameFinished: true,
     });
   }
 
   // Not all wallies have been found yet
-  return res.send({ wallyValid: true, centerCoordinates, gameFinished: false });
+  return res.send({
+    wallyValid: true,
+    wallyAlreadyFound: false,
+    centerCoordinates,
+    gameFinished: false,
+  });
 });
 
 exports.resetWallies = asyncHandler(async (req, res) => {

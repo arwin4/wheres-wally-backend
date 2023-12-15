@@ -10,10 +10,10 @@ const Wally = require('../models/wally');
 
 const slide = new Wally({
   name: 'slide',
-  topBorderCoordinate: 955,
-  bottomBorderCoordinate: 1040,
-  leftBorderCoordinate: 1490,
-  rightBorderCoordinate: 1568,
+  topBorderCoordinate: 925,
+  bottomBorderCoordinate: 1075,
+  leftBorderCoordinate: 1460,
+  rightBorderCoordinate: 1600,
   centerCoordinates: {
     top: 949,
     left: 1480,
@@ -22,10 +22,10 @@ const slide = new Wally({
 
 const fountain = new Wally({
   name: 'fountain',
-  topBorderCoordinate: 693,
-  leftBorderCoordinate: 1189,
-  bottomBorderCoordinate: 772,
-  rightBorderCoordinate: 1263,
+  topBorderCoordinate: 655,
+  leftBorderCoordinate: 1155,
+  bottomBorderCoordinate: 800,
+  rightBorderCoordinate: 1285,
   centerCoordinates: {
     top: 686,
     left: 1174,
@@ -36,7 +36,7 @@ const lonelyIsland = new Wally({
   name: 'lonely island',
   topBorderCoordinate: 906,
   leftBorderCoordinate: 294,
-  bottomBorderCoordinate: 1066,
+  bottomBorderCoordinate: 1077,
   rightBorderCoordinate: 439,
   centerCoordinates: {
     top: 955,

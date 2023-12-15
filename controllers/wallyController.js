@@ -26,15 +26,17 @@ async function verifyWallyData(req) {
 
 exports.verifyWally = asyncHandler(async (req, res) => {
   const wallyValid = await verifyWallyData(req);
+
+  // Incorrect guess
   if (!wallyValid) return res.send({ wallyValid: false, gameFinished: false });
 
   const { wallyName } = req.body;
   const user = await findUser(req.body.userToken);
 
-  // Mark wally as found
   try {
     const foundWally = user.wallies.find((wally) => wally.name === wallyName);
 
+    // Check if wally was already found
     if (foundWally.foundByUser) {
       return res.send({
         wallyValid: true,
@@ -43,11 +45,12 @@ exports.verifyWally = asyncHandler(async (req, res) => {
       });
     }
 
+    // Mark wally as found
     foundWally.foundByUser = true;
     user.markModified('wallies'); // Mongoose won't detect the change without this
     await user.save();
   } catch (error) {
-    throw new Error('Unable to update found wallies in database');
+    throw new Error('Unable to update found wally in database');
   }
 
   // Get wally's center coordinates, used for marking on the canvas

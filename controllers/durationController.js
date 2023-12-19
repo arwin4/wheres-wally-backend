@@ -5,8 +5,7 @@ const findUser = require('../utils/findUser');
 exports.setGameStartTimestamp = asyncHandler(async (req, res) => {
   try {
     const user = await findUser(req.body.userToken);
-    if (user.gameStartTimestamp)
-      return res.send('Tracking has already started.');
+    if (user.gameStartTimestamp) return res.sendStatus(204);
     user.gameStartTimestamp = Date.now();
     await user.save();
   } catch (error) {
@@ -18,6 +17,7 @@ exports.setGameStartTimestamp = asyncHandler(async (req, res) => {
 exports.setGameFinishTimestamp = asyncHandler(async (req, res) => {
   try {
     const user = await findUser(req.body.userToken);
+    if (user.gameFinishTimestamp) return res.sendStatus(204);
     user.gameFinishTimestamp = Date.now();
     await user.save();
   } catch (error) {

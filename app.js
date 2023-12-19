@@ -9,9 +9,10 @@ const mongoose = require('mongoose');
 const app = express();
 
 // CORS
-// Allow requests from ANY origin
-// TODO: Allow requests only from our frontend
-app.use(cors());
+const corsOptions = {
+  origin: 'https://wheres-wally-frontend.vercel.app',
+};
+app.use(cors(corsOptions));
 
 // Import secrets
 require('dotenv').config();

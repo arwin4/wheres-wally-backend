@@ -5,13 +5,13 @@ const addWalliesToUser = require('../utils/addWalliesToUser');
 const findUser = require('../utils/findUser');
 const getFormattedScore = require('../utils/getFormattedScore');
 
-exports.sendUserToken = asyncHandler(async (req, res) => {
-  const userToken = randomUUID();
+exports.sendUserId = asyncHandler(async (req, res) => {
+  const userId = randomUUID();
 
   // Add user to database
   try {
     let user = new User({
-      userId: userToken,
+      userId,
     });
 
     user = addWalliesToUser(user);
@@ -20,12 +20,12 @@ exports.sendUserToken = asyncHandler(async (req, res) => {
   } catch (error) {
     throw new Error('Unable to add new user to database');
   }
-  return res.send({ userToken });
+  return res.send({ userId });
 });
 
 exports.setUserName = asyncHandler(async (req, res) => {
   try {
-    const user = await findUser(req.body.userToken);
+    const user = await findUser(req.params.id);
     const { name } = req.body;
 
     user.name = name;
@@ -39,7 +39,7 @@ exports.setUserName = asyncHandler(async (req, res) => {
 
 exports.getUserScore = asyncHandler(async (req, res) => {
   try {
-    const formattedScore = await getFormattedScore(req.params.userToken);
+    const formattedScore = await getFormattedScore(req.params.id);
     return res.send({ formattedScore });
   } catch (err) {
     return res.status(500).send(err.message);

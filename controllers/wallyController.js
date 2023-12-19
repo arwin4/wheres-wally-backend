@@ -31,7 +31,7 @@ exports.verifyWally = asyncHandler(async (req, res) => {
   if (!wallyValid) return res.send({ wallyValid: false, gameFinished: false });
 
   const { wallyName } = req.body;
-  const user = await findUser(req.body.userToken);
+  const user = await findUser(req.body.userId);
 
   try {
     const foundWally = user.wallies.find((wally) => wally.name === wallyName);
@@ -82,7 +82,7 @@ exports.verifyWally = asyncHandler(async (req, res) => {
 });
 
 exports.resetWallies = asyncHandler(async (req, res) => {
-  const user = await findUser(req.body.userToken);
+  const user = await findUser(req.params.id);
   try {
     user.wallies.forEach((wally) => {
       const currentWally = wally;

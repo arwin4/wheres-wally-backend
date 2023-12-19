@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Receive userToken",
+			"name": "Receive userId",
 			"event": [
 				{
 					"listen": "test",
@@ -15,7 +15,7 @@
 						"exec": [
 							"pm.test(\"userToken received\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.userToken).length(36)\r",
+							"    pm.expect(jsonData.userId).length(36)\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -60,7 +60,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userToken\": \"test\",\r\n    \"name\": \"MyName\"\r\n}",
+					"raw": "{\r\n    \"name\": \"MyName\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,7 +68,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/name",
+					"raw": "http://localhost:3000/user/test/name",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,6 +76,7 @@
 					"port": "3000",
 					"path": [
 						"user",
+						"test",
 						"name"
 					]
 				}
@@ -84,20 +85,24 @@
 		},
 		{
 			"name": "Get user score",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userToken\": \"159f9ff5-1443-48d3-86af-431d1d7464ff\",\r\n    \"name\": \"MyName\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(`\"formattedScore\"`);\r",
+							"});"
+						],
+						"type": "text/javascript"
 					}
-				},
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user/name",
+					"raw": "http://localhost:3000/user/test/score",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -105,7 +110,8 @@
 					"port": "3000",
 					"path": [
 						"user",
-						"name"
+						"test",
+						"score"
 					]
 				}
 			},

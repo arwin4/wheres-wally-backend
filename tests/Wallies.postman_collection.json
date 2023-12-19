@@ -68,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1200,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1200,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userId\": \"test\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -110,7 +110,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 500\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 500\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userId\": \"test\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,7 +152,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 2000\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"test\"\r\n}",
+					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 2000\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userId\": \"test\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -194,7 +194,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userToken\": \"f80c7cf6-e7f3-4c6e-8696-b689d0d42f06\"\r\n}",
+					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"slide\",\r\n    \"userId\": \"f80c7cf6-e7f3-4c6e-8696-b689d0d42f06\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -276,7 +276,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"fountain\", // This is the wally of 'slide'\r\n    \"userToken\": \"test\"\r\n}",
+					"raw": "{\r\n    \"clickCoordinates\": {\r\n        \"x\": 1500,\r\n        \"y\": 955\r\n    },\r\n    \"wallyName\": \"fountain\", // This is the wally of 'slide'\r\n    \"userId\": \"test\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

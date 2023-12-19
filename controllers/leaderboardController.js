@@ -9,12 +9,13 @@ exports.sendLeaderboard = asyncHandler(async (req, res) => {
       gameFinishTimestamp: { $exists: true },
       name: { $exists: true },
     },
-    'name gameStartTimestamp gameFinishTimestamp',
+    'name userId gameStartTimestamp gameFinishTimestamp',
   ).exec();
 
   const usersSortedByScore = usersWithFinishedGames
     .map((user) => ({
-      userId: user._id,
+      key: user._id,
+      userId: user.userId,
       name: user.name,
       duration: user.gameFinishTimestamp - user.gameStartTimestamp,
       durationFormatted: formatDistanceStrict(

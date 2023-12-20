@@ -5,10 +5,6 @@ const UserSchema = mongoose.Schema({
     required: true,
     type: String,
   },
-  sessionId: {
-    // required: true,
-    type: String,
-  },
   name: {
     type: String,
   },
@@ -19,7 +15,6 @@ const UserSchema = mongoose.Schema({
     type: Date,
   },
   wallies: {
-    // required: true,
     type: Array,
   },
 });

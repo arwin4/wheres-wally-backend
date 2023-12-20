@@ -11,6 +11,7 @@ const app = express();
 // CORS
 const corsOptions = {
   origin: 'https://wheres-wally-frontend.vercel.app',
+  maxAge: 7200,
 };
 app.use(cors(corsOptions));
 

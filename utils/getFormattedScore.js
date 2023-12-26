@@ -1,4 +1,4 @@
-const { formatDistanceStrict } = require('date-fns');
+const { formatDuration, intervalToDuration } = require('date-fns');
 const findUser = require('./findUser');
 
 async function getFormattedScore(userId) {
@@ -8,10 +8,12 @@ async function getFormattedScore(userId) {
     return 'User has not finished a game';
   }
 
-  return formatDistanceStrict(
-    user.gameFinishTimestamp,
-    user.gameStartTimestamp,
-  );
+  const duration = intervalToDuration({
+    start: user.gameStartTimestamp,
+    end: user.gameFinishTimestamp,
+  });
+
+  return formatDuration(duration, { delimiter: ' and ' });
 }
 
 module.exports = getFormattedScore;

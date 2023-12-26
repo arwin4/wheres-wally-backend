@@ -1,5 +1,11 @@
 const asyncHandler = require('express-async-handler');
-const { formatDistanceStrict } = require('date-fns');
+const {
+  formatDistanceStrict,
+  formatISO,
+  formatDuration,
+  parseISO,
+  intervalToDuration,
+} = require('date-fns');
 const User = require('../models/user');
 
 exports.sendLeaderboard = asyncHandler(async (req, res) => {
@@ -13,16 +19,20 @@ exports.sendLeaderboard = asyncHandler(async (req, res) => {
   ).exec();
 
   const usersSortedByScore = usersWithFinishedGames
-    .map((user) => ({
-      key: user._id,
-      userId: user.userId,
-      name: user.name,
-      duration: user.gameFinishTimestamp - user.gameStartTimestamp,
-      durationFormatted: formatDistanceStrict(
-        user.gameFinishTimestamp,
-        user.gameStartTimestamp,
-      ),
-    }))
+    .map((user) => {
+      const duration = intervalToDuration({
+        start: user.gameStartTimestamp,
+        end: user.gameFinishTimestamp,
+      });
+
+      return {
+        key: user._id,
+        userId: user.userId,
+        name: user.name,
+        duration,
+        durationFormatted: formatDuration(duration, { delimiter: ' and ' }),
+      };
+    })
     .sort((a, b) => a.duration - b.duration);
 
   return res.send(usersSortedByScore);
